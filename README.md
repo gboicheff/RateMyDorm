@@ -1,7 +1,10 @@
 # Rate My Dorm
 
-run frontend: npm run client
 
-run backend: npm run server
+first add the .env file to your project then run one of the following:
 
-run both: npm run dev
+frontend: npm run client
+
+backend: npm run server
+
+both: npm run dev
