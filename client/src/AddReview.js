@@ -14,12 +14,13 @@ const AddReview = (props) => {
         //check if rating is chosen and if text is empty
         if(reviewText == "" || reviewNum == -1)
         {
+            console.log(props.dormid);
             setShowError(1);
             return;
         }
 
         //add review to database
-        axios.post("/api/post_review", {text: reviewText, });
+        axios.post("/api/post_review", {text: reviewText, rating: reviewNum, dorm_id: props.dormid});
         
         //text --> reviewText
         //rating --> reviewNum
@@ -35,7 +36,7 @@ const AddReview = (props) => {
     return(
         <div>
             <div>
-            <p>Enter your review for {}</p>
+            <p>Enter your review for {props.dormname}</p>
             </div>
 
             <p style={{color:'red'}}>{showError ? "You must have a rating and review" : ""}</p>
