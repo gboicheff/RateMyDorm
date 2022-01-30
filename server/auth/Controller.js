@@ -1,7 +1,11 @@
 const User = require("../models/Users");
 
 const login = (req, res) => {
-  return res.status(200).json({ msg: "user sucessfully logged in" });
+    // console.log("llksdafl;kjasd;kjlfasd;kjlsd;fjklsa")
+    // res.redirect(307, '/')
+    // console.log("111111111111111111111111111")
+    // return
+    return res.status(200).json({ msg: "user sucessfully logged in" });
 };
 
 const signup = async (req, res) => {
@@ -25,7 +29,7 @@ const signup = async (req, res) => {
 
 const logout = (req, res) => {
   req.logout();
-  res.status(200).json({ msg: "logged out" });
+  res.redirect("/")
 };
 
 const account = (req, res) => {
