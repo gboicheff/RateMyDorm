@@ -1,0 +1,34 @@
+
+
+.Home {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 3px solid rgb(0, 75, 0);
+  padding: 10px;
+  background-color: #a3aab9;
+  color: white;
+}
+
+.FrontPageTitle {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 50px;
+  background-color: #002775;
+  color: white;
+}
+
+.Home-header {
+  background-color: #002775;
+  color: white;
+}
+
+.Home-link {
+  color: #61dafb;
+}
+

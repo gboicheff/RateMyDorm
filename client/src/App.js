@@ -1,16 +1,33 @@
+import logo from './logo.svg';
 import './App.css';
-import * as React from 'react';
-import Menu from './Menu.js';
-import TextField from '@mui/material/TextField';
+import Home from './Home'
+import { BrowserRouter, Redirect, Route} from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Menu></Menu>
-      </header>
-      <TextField id="outlined-basic" label="Search" variant="outlined" />
+      <BrowserRouter>
+                <Route path="/" exact>
+                    
+                </Route>
+                <Route path="/login" exact>
+
+                </Route>
+                <Route path="/account" exact>
+                    
+                </Route>
+                <Route path="/signup" exact>
+                    
+                </Route>
+
+                <Route path="/home">
+                    <Home />
+                </Route>
+
+                <Route path = "/postreview" exact>
+                </Route>
+      </BrowserRouter>
     </div>
   );
 }
