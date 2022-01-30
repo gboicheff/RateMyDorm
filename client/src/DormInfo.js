@@ -36,7 +36,6 @@ const [review_list, setReviews] = useState([]);
     Add Review
 </Button>
         {console.log(object._id)}
-        <p>Test text</p>
        {review_list.map((reviews) => {
          return (<div><div> {reviews.rating} </div>
             <div> {reviews.text} </div>

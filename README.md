@@ -1,10 +1,6 @@
 # Rate My Dorm
+Steps to run the project:
 
-
-first add the .env file to your project then run one of the following:
-
-frontend: npm run client
-
-backend: npm run server
-
-both: npm run dev
+1. npm run setup
+2. npm run dev
+3. navigate to localhost:3000
