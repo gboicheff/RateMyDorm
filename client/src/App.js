@@ -33,7 +33,7 @@ function App() {
                       <Account account = {account}/>
                 </Route>
                 <Route path="/signup" exact>
-                    <Signup/>
+                    <Signup account = {account}/>
                 </Route>
 
                 <Route path="/home" exact>
