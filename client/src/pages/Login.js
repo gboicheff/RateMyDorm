@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Login(props) {
 
@@ -104,7 +104,7 @@ function Login(props) {
         )
     }
     else {
-        return <Redirect to="/"/>
+        return <Navigate to="/"/>
     }
         
 }

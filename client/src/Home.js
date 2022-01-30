@@ -3,11 +3,32 @@ import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from "react";
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+import {useNavigate, Navigate} from 'react-router-dom'
 
 
 function Home() {
+  const navigate = useNavigate();
+  const searchButton = (e) => {
+    dorms.forEach(dormms => {
+      //console.log(dormms.name);
+      //console.log(value);
+      if (dormms.name === value){
+      var object = {name: dormms.name, coordinates: dormms.coordinates, _id: dormms._id, college:dormms.college  }
+      // object.name = dormms.name;
+      // object.coordinates = dormms.coordinates;
+      // object._id = dormms._id;
+      // object.college = dormms.college
+      //setSearchEnter(object);
+      navigate('/DormInfo', {state: {object}});
+      console.log(object);
+      return object;}
+    })
+  }
+
+
   const [value, setValue] = useState("");
-  const [searchEnter, setSearchEnter] = useState("");
+  const [searchEnter, setSearchEnter] = useState();
   
   const [dorms, setDorms] = useState([]);
   const [dormNames, setDormNames] = useState([]);
@@ -33,16 +54,25 @@ function Home() {
     <div>
       <div className="Home">
       <Autocomplete
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
       disablePortal
       id="autocompleteSearch"
       options={dorms.map((dormss) => ( dormss.name))}
       sx={{ width: 300 }}
       renderInput={(params) =>
-        <TextField {...params} label="Search" onChange={(e) => setValue(e.target.value)}
-      value={value} 
+        <TextField {...params} label="Search"
         />
         }/>
       <div>
+          <Button
+            variant = "contained"
+            onClick={searchButton}
+          >
+            Search
+        </Button>
       </div>
       </div>
       <div className="FrontPageTitle">

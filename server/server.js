@@ -62,18 +62,23 @@ app.get("/api/get_my_reviews", async (req, res) => {
     res.send(reviews)
 })
 
-app.post("/api/post_review", (req, res) => {
-    let reviewBody = req.body.review
-    reviewBody.user_id = req.user_id
-    const review = new models.Reviews(reviewBody)
-    review.save((err) => {
-        if(!err){
-            res.sendStatus(200)
-        }
-        else{
-            res.sendStatus(500)
-        }
-    })
+app.post("/api/post_review", async (req, res) => {
+    if(!req.user){res.send(500)}
+    else {
+        let reviewBody = req.body.review
+        const user_id = await Users.findOne({email: req.user.email})
+        reviewBody.user_id = user_id
+        console.log(reviewBody)
+        const review = new models.Reviews(reviewBody)
+        review.save((err) => {
+            if(!err){
+                res.sendStatus(200)
+            }
+            else{
+                res.sendStatus(500)
+            }
+        })
+    }
 })
 
 

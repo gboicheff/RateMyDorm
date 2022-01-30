@@ -1,4 +1,4 @@
-
+import {useLocation} from "react-router-dom";
 import React, { useState} from 'react';
 import axios from 'axios';
 
@@ -7,21 +7,23 @@ const AddReview = (props) => {
     const [reviewText, setReviewText] = useState('');
     const [reviewNum, setReviewNum] = useState(-1);
     
-
+    const {state} = useLocation();
+    const {object } = state;
     const [showError, setShowError] = useState(0);
 
     const submitReview = async () => {
         //check if rating is chosen and if text is empty
         if(reviewText == "" || reviewNum == -1)
         {
-            console.log(props.dormid);
+            //console.log(object._id)
             setShowError(1);
             return;
         }
         console.log({text: reviewText, rating: parseInt(reviewNum), dorm_id: props.dormid})
 
         //add review to database
-        await axios.post("/api/post_review", {review: {text: reviewText, rating: reviewNum, dorm_id: props.dormid, }}).catch(err => console.log(err))
+        //console.log({text: reviewText, rating: parseInt(reviewNum), dorm_id: object._id})
+        await axios.post("/api/post_review", {review: {text: reviewText, rating: parseInt(reviewNum), dorm_id: object._id}}).catch(err => console.log(err))
         
         //text --> reviewText
         //rating --> reviewNum
@@ -32,12 +34,13 @@ const AddReview = (props) => {
 
         //return to dorm page
         // window.location.href = "/test";
+        window.location.href = "/";
     }
 
     return(
         <div>
             <div>
-            <p>Enter your review for {props.dormname}</p>
+            <p>Enter your review for {object.name}</p>
             </div>
 
             <p style={{color:'red'}}>{showError ? "You must have a rating and review" : ""}</p>
