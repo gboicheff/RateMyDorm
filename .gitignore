@@ -34,3 +34,5 @@ proxySetup.js
 
 /client/src/myID.txt
 client/src/setupProxy.js
+package-lock.json
+client/package-lock.json
