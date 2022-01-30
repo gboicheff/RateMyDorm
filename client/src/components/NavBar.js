@@ -36,7 +36,7 @@ export default function ButtonAppBar(props) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Link href="/home">
+          <Link href="/">
             <IconButton
               size="large"
               edge="start"
