@@ -57,6 +57,7 @@ app.get("/api/get_reviews/:dorm_id", async (req, res) => {
 
 app.post("/api/post_review", (req, res) => {
     const review = new models.Reviews(req.body.review)
+    console.log(review)
     review.save((err) => {
         if(!err){
             res.sendStatus(200)

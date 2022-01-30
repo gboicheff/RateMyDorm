@@ -8,6 +8,7 @@ import Account from "./pages/Account"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Home from './Home'
+import DormInfo from './DormInfo';
 
 
 function App() {
@@ -43,6 +44,11 @@ function App() {
                 <Route path="/home" element={
                     <Home />}>
                 </Route>
+
+                <Route path="/DormInfo" element={
+                   <DormInfo />}>
+                   </Route>
+
 
                 <Route path = "/postreview" element={
                   <AddReview dormid={123} dormname={"Trusler Hall"}/>}>

@@ -10,18 +10,19 @@ import {useNavigate, Navigate} from 'react-router-dom'
 function Home() {
   const navigate = useNavigate();
   const searchButton = (e) => {
-    dorms.map(dormms => {
-      console.log(dormms.name);
-      console.log(value);
-      if (dormms.name === value)
-      var object = {};
-      object.name = dormms.name;
-      object.coordinates = dormms.coordinates;
-      object._id = dormms._id;
-      object.college = dormms.college
-      setSearchEnter(object);
-      navigate('/DormInfo', {state: object});
-      return object;
+    dorms.forEach(dormms => {
+      //console.log(dormms.name);
+      //console.log(value);
+      if (dormms.name === value){
+      var object = {name: dormms.name, coordinates: dormms.coordinates, _id: dormms._id, college:dormms.college  }
+      // object.name = dormms.name;
+      // object.coordinates = dormms.coordinates;
+      // object._id = dormms._id;
+      // object.college = dormms.college
+      //setSearchEnter(object);
+      navigate('/DormInfo', {state: {object}});
+      console.log(object);
+      return object;}
     })
   }
 
