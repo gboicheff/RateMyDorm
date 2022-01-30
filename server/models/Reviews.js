@@ -4,6 +4,7 @@ const Reviews = new mongoose.Schema({
     text :{ type: String, required: true},
     rating :{ type: Number, required: true},
     dorm_id: { type: mongoose.ObjectId, required: true},
+    user_id: { type: mongoose.ObjectId, required: true}
     // posted_by: { type: mongoose.ObjectId, required: true } //add later
 
 }, { timestamps: true });

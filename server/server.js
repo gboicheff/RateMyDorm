@@ -13,6 +13,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const MongoStore = require("connect-mongo");
 const passport = require("./auth/passport");
 const AuthRoute = require("./auth/Auth");
+const Users = require("./models/Users")
 
 const port = process.env.PORT || 5000;
 const app = express()
@@ -55,8 +56,16 @@ app.get("/api/get_reviews/:dorm_id", async (req, res) => {
     res.send(reviews)
 })
 
+app.get("/api/get_my_reviews", async (req, res) => {
+    const user_id = await Users.findOne({email: req.user.email})
+    const reviews = await models.Reviews.find({user_id: new ObjectId(user_id)})
+    res.send(reviews)
+})
+
 app.post("/api/post_review", (req, res) => {
-    const review = new models.Reviews(req.body.review)
+    let reviewBody = req.body.review
+    reviewBody.user_id = req.user_id
+    const review = new models.Reviews(reviewBody)
     review.save((err) => {
         if(!err){
             res.sendStatus(200)

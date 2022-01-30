@@ -8,6 +8,7 @@ import Account from "./pages/Account"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Home from './Home'
+import NavBar from './components/NavBar'
 
 
 function App() {
@@ -25,27 +26,28 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar account={account}/>
       <BrowserRouter>
-                <Route path="/" exact>
-                    
-                </Route>
-                <Route path="/login" exact>
-                    <Login account = {account}/>
-                </Route>
-                <Route path="/account" exact>
-                      <Account account = {account}/>
-                </Route>
-                <Route path="/signup" exact>
-                    <Signup account = {account}/>
-                </Route>
+        <Route path="/" exact>
+            
+        </Route>
+        <Route path="/login" exact>
+            <Login account = {account}/>
+        </Route>
+        <Route path="/account" exact>
+              <Account account = {account}/>
+        </Route>
+        <Route path="/signup" exact>
+            <Signup account = {account}/>
+        </Route>
 
-                <Route path="/home" exact>
-                    <Home />
-                </Route>
+        <Route path="/home" exact>
+            <Home />
+        </Route>
 
-                <Route path = "/postreview" exact>
-                  <AddReview dormid={123} dormname={"Trusler Hall"}/>
-                </Route>
+        <Route path = "/postreview" exact>
+          <AddReview dormid={"61f50c990f6f0265ccc8a3e3"} dormname={"Trusler Hall"} account={account}/>
+        </Route>
       </BrowserRouter>
     </div>
   );

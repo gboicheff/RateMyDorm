@@ -10,7 +10,7 @@ const AddReview = (props) => {
 
     const [showError, setShowError] = useState(0);
 
-    const submitReview = () => {
+    const submitReview = async () => {
         //check if rating is chosen and if text is empty
         if(reviewText == "" || reviewNum == -1)
         {
@@ -18,9 +18,10 @@ const AddReview = (props) => {
             setShowError(1);
             return;
         }
+        console.log({text: reviewText, rating: parseInt(reviewNum), dorm_id: props.dormid})
 
         //add review to database
-        axios.post("/api/post_review", {text: reviewText, rating: reviewNum, dorm_id: props.dormid});
+        await axios.post("/api/post_review", {review: {text: reviewText, rating: reviewNum, dorm_id: props.dormid, }}).catch(err => console.log(err))
         
         //text --> reviewText
         //rating --> reviewNum
@@ -30,7 +31,7 @@ const AddReview = (props) => {
 
 
         //return to dorm page
-        window.location.href = "/test";
+        // window.location.href = "/test";
     }
 
     return(
