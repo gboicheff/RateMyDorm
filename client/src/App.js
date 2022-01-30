@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import AddReview from './AddReview'
-import { BrowserRouter, Redirect, Route} from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Account from "./pages/Account"
@@ -26,26 +26,28 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Routes>
                 <Route path="/" exact>
                     
                 </Route>
-                <Route path="/login" exact>
-                    <Login account = {account}/>
+                <Route path="/login" element={
+                    <Login account = {account}/>}>
                 </Route>
-                <Route path="/account" exact>
-                      <Account account = {account}/>
+                <Route path="/account" element={
+                      <Account account = {account}/>}>
                 </Route>
-                <Route path="/signup" exact>
-                    <Signup account = {account}/>
-                </Route>
-
-                <Route path="/home" exact>
-                    <Home />
+                <Route path="/signup" element={
+                    <Signup account = {account}/>}>
                 </Route>
 
-                <Route path = "/postreview" exact>
-                  <AddReview dormid={123} dormname={"Trusler Hall"}/>
+                <Route path="/home" element={
+                    <Home />}>
                 </Route>
+
+                <Route path = "/postreview" element={
+                  <AddReview dormid={123} dormname={"Trusler Hall"}/>}>
+                </Route>
+                </Routes>
       </BrowserRouter>
     </div>
   );
