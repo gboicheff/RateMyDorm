@@ -7,6 +7,8 @@ import Signup from "./pages/Signup"
 import Account from "./pages/Account"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Home from './Home'
+
 
 function App() {
 
@@ -38,7 +40,7 @@ function App() {
                 </Route>
 
                 <Route path="/home" exact>
-                    
+                    <Home />
                 </Route>
 
                 <Route path = "/postreview" exact>
